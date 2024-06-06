@@ -6,18 +6,18 @@ import java.sql.SQLException;
 
 public class conexion {
 
-    private static final String URL = "jdbc:mysql://45.88.196.5:3306/u484426513_diseno224";
-    private static final String USER = "u484426513_diseno224";
-    private static final String PASSWORD = "#7cYr646u@*Rp.P";
+    private static final String URL = "jdbc:mysql://localhost:3306/laboratorio1";
+    private static final String USER = "Joly_Admin";
+    private static final String PASSWORD = "Kazuha3421-";
 
 
     public static Connection getConnection(){
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Conectado al server remotto");
+            System.out.println("Conectado al servidor");
         } catch ( SQLException e){
-            System.err.println("Fallo la conexion" + e.getMessage());
+            System.err.println("Falló la conexión" + e.getMessage());
         }
         return connection;
     }
