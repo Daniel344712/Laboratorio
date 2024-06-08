@@ -15,6 +15,22 @@ public class Main {
         ConsoleView consoleView = new ConsoleView();
         CursoController cursoController = new CursoController(consoleView);
 
+        /**
+         * Prueba de inserción de datos a la tabla productos_RD
+         * */
+        //String nombreProducto = "Mouse";
+        //int cantidad = 20;
+       // int precio = 7000;
+        //cursoController.agregarProdcuto(nombreProducto, cantidad, precio);
+        //cursoController.mostrarProdcuto(nombreProducto, cantidad, precio);
+        //cursoController.eliminarProducto(2);
+        //cursoController.modificarProducto(1, "Teclado",25, 10000);
+
+
+        /**
+         * Prueba de inserción de datos a la tabla pedidos_RD
+         * */
+
 
     }
 }
