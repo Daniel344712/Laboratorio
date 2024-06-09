@@ -13,7 +13,7 @@ public class PedidoDAO {
         String query = "INSERT INTO `pedidos_RD` (`idusuario`, `fecha`, `total`, `sedeid`) VALUES (?,?,?,?)";
         try (PreparedStatement stmt = con.prepareStatement(query)) {
             stmt.setInt(1, pedido.getIdUsuario());
-            stmt.setDate(2, pedido.getFecha());
+            stmt.setString(2, pedido.getFecha());
             stmt.setDouble(3, pedido.getTotal());
             stmt.setInt(4, pedido.getIdSede());
             stmt.executeUpdate();
@@ -35,19 +35,20 @@ public class PedidoDAO {
     }
 
     public void borrarPedido(PedidoModel pedido) throws SQLException {
-        String query = "DELETE FROM `pedidos_RD` WHERE `id` = ?";
+        String query = "DELETE FROM `pedidos_RD` WHERE `idpedidos` = ?";
         try (PreparedStatement stmt = con.prepareStatement(query)) {
             stmt.setInt(1, pedido.getId());
             stmt.executeUpdate();
         }
     }
     public void modificarPedido(PedidoModel pedido) throws SQLException {
-        String query = "UPDATE `pedidos_RD` SET `idusuario` = ?, `fecha` = ?, `total` = ? WHERE `id` = ?";
+        String query = "UPDATE `pedidos_RD` SET `idusuario` = ?, `fecha` = ?, `total` = ? , `sedeid` = ? WHERE `idpedidos` = ?";
         try (PreparedStatement stmt = con.prepareStatement(query)) {
             stmt.setInt(1, pedido.getIdUsuario());
-            stmt.setDate(2, pedido.getFecha());
+            stmt.setString(2, pedido.getFecha());
             stmt.setDouble(3, pedido.getTotal());
             stmt.setInt(4, pedido.getIdSede());
+            stmt.setInt(5, pedido.getId());
             stmt.executeUpdate();
         }
     }
