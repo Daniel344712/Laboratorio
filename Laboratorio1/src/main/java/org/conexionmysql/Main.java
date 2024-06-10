@@ -36,15 +36,19 @@ public class Main {
         String localizacion = "orotina";
         int idusuarios = 2;
         int idsede = 2;
+        /**
+         * Prueba de inserción de datos a la tabla usuario_RD
+         * */
       //  usuarioController.agregarUsuario(apellido,cedula,nombre);
        // usuarioController.borrarUsuario(idusuarios);
        // usuarioController.actualizarUsuario(apellido,cedula,nombre,idusuarios);
-       //sedesController.agregarSedes(nombre,localizacion);
-      // sedesController.actualizarSede(nombre,localizacion, idsede);
-       // sedesController.mostrarSede(nombre,localizacion);
         usuarioController.mostrarUsuario(nombre,apellido,cedula);
-
-
+        /**
+         * Prueba de inserción de datos a la tabla sedes_RD
+         * */
+        //sedesController.agregarSedes(nombre,localizacion);
+        // sedesController.actualizarSede(nombre,localizacion, idsede);
+        // sedesController.mostrarSede(nombre,localizacion);
         /**
          * Prueba de inserción de datos a la tabla productos_RD
          * */
