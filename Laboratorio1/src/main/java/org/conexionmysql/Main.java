@@ -2,6 +2,9 @@ package org.conexionmysql;
 
 import controller.ConexionController;
 import controller.CursoController;
+import controller.SedesController;
+import controller.UsuarioController;
+import model.usuariosModel;
 import view.ConsoleView;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -15,22 +18,21 @@ public class Main {
         ConsoleView consoleView = new ConsoleView();
         CursoController cursoController = new CursoController(consoleView);
 
-        /**
-         * Prueba de inserción de datos a la tabla productos_RD
-         * */
-        //String nombreProducto = "Mouse";
-        //int cantidad = 20;
-       // int precio = 7000;
-        //cursoController.agregarProdcuto(nombreProducto, cantidad, precio);
-        //cursoController.mostrarProdcuto(nombreProducto, cantidad, precio);
-        //cursoController.eliminarProducto(2);
-        //cursoController.modificarProducto(1, "Teclado",25, 10000);
-
-
-        /**
-         * Prueba de inserción de datos a la tabla pedidos_RD
-         * */
-
+        UsuarioController usuarioController = new UsuarioController(consoleView);
+        SedesController sedesController = new SedesController(consoleView);
+        String apellido = "Peraza";
+        String cedula = "119310559";
+        String nombre = "San Jose";
+        String localizacion = "orotina";
+        int idusuarios = 2;
+        int idsede = 2;
+      //  usuarioController.agregarUsuario(apellido,cedula,nombre);
+       // usuarioController.borrarUsuario(idusuarios);
+       // usuarioController.actualizarUsuario(apellido,cedula,nombre,idusuarios);
+       //sedesController.agregarSedes(nombre,localizacion);
+      // sedesController.actualizarSede(nombre,localizacion, idsede);
+       // sedesController.mostrarSede(nombre,localizacion);
+        usuarioController.mostrarUsuario(nombre,apellido,cedula);
 
     }
 }
