@@ -13,6 +13,7 @@ import view.ConsoleView;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLOutput;
 import java.time.ZoneId;
 import java.util.Scanner;
 
@@ -102,7 +103,37 @@ public class Main {
             System.out.println("2. Mostrar Usuario");
             System.out.println("3. Eliminar Usuario");
             System.out.println("4. Actualizar Usuario");
-            System.out.println("5. Salir");
+            System.out.println("***PRODUCTOS***");
+            System.out.println("6. Registrar Producto");
+            System.out.println("7. Mostrar Producto");
+            System.out.println("8. Eliminar Producto");
+            System.out.println("9. Actualizar Producto");
+            System.out.println("***CATEGORIAS***");
+            System.out.println("10. Registrar Categoria");
+            System.out.println("11. Mostrar Categoria");
+            System.out.println("12. Eliminar Categoria");
+            System.out.println("13. Actualizar Categoria");
+            System.out.println("***PEDIDOS***");
+            System.out.println("14. Registrar Pedido");
+            System.out.println("15. Mostrar Pedido");
+            System.out.println("16. Eliminar Pedido");
+            System.out.println("17. Actualizar Pedido");
+            System.out.println("***SEDES***");
+            System.out.println("18. Registrar Sede");
+            System.out.println("19. Mostrar Sede");
+            System.out.println("20. Eliminar Sede");
+            System.out.println("21. Modificar Sede");
+            System.out.println("***ROL***");
+            System.out.println("22. Registrar Rol");
+            System.out.println("23. Eliminar Rol");
+            System.out.println("24. Actualizar Rol");
+            System.out.println("25. Modificar Rol");
+            System.out.println("***ASOCIACION***");
+            System.out.println("26. Registrar Asociacion");
+            System.out.println("27. Eliminar Asociacion");
+            System.out.println("28. Actualizar Asociacion");
+            System.out.println("29. Modificar Asociacion");
+            System.out.println("0. Salir");
             System.out.print("Elija una opción: ");
 
             // Leer la opción del usuario
@@ -146,7 +177,7 @@ public class Main {
                     correo = scanner.nextLine();
                     usuarioController.actualizarUsuario(cedula, nombre, apellido,correo,telefono,idusuarios);
                     break;
-                case 5:
+                case 0:
                     System.out.println("Saliendo del sistema...");
                     break;
                 default:
