@@ -11,12 +11,24 @@ import controller.*;
 
 import view.ConsoleView;
 
+import java.io.IOException;
 import java.sql.Date;
+import java.time.ZoneId;
+import java.util.Scanner;
+
+import static java.time.Clock.system;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        String nombre = "";
+        String apellido = "";
+        String cedula = "";
+        String correo = "";
+        int telefono = 0;
+
+        Scanner scanner = new Scanner(System.in);
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.printf("Prueba MySQL!");
@@ -30,19 +42,17 @@ public class Main {
 
         UsuarioController usuarioController = new UsuarioController(consoleView);
         SedesController sedesController = new SedesController(consoleView);
-        String apellido = "Peraza";
-        String cedula = "119310559";
-        String nombre = "San Jose";
+
         String localizacion = "orotina";
-        int idusuarios = 2;
+
         int idsede = 2;
         /**
          * Prueba de inserción de datos a la tabla usuario_RD
          * */
-      //  usuarioController.agregarUsuario(apellido,cedula,nombre);
-       // usuarioController.borrarUsuario(idusuarios);
-       // usuarioController.actualizarUsuario(apellido,cedula,nombre,idusuarios);
-        usuarioController.mostrarUsuario(nombre,apellido,cedula);
+        //  usuarioController.agregarUsuario(apellido,cedula,nombre);
+        // usuarioController.borrarUsuario(idusuarios);
+        // usuarioController.actualizarUsuario(apellido,cedula,nombre,idusuarios);
+        // usuarioController.mostrarUsuario(nombre, apellido, cedula);
         /**
          * Prueba de inserción de datos a la tabla sedes_RD
          * */
@@ -58,20 +68,20 @@ public class Main {
         //productoController.agregarProdcuto(nombreProducto, cantidad, precio);
         //productoController.mostrarProdcuto(nombreProducto, cantidad, precio);
         //productoController.eliminarProducto(2);
-       // productoController.modificarProducto(1, "Teclado",25, 10000);
+        // productoController.modificarProducto(1, "Teclado",25, 10000);
 
 
         /**
          * Prueba de inserción de datos a la tabla pedidos_RD
          * */
-        int idUsuario = 0;
+
         String fecha = "";
         int total = 0;
         int idSede = 0;
-       //pedidoController.agregarPedido(2, "2024-01-05", 5000, 2);
+        //pedidoController.agregarPedido(2, "2024-01-05", 5000, 2);
         //pedidoController.modificarPedido(1, 2, "2024-02-01", 12500, 2);
-       // pedidoController.eliminarPedido(2);
-       //edidoController.mostrarPedido(idUsuario, fecha, total, idSede);
+        // pedidoController.eliminarPedido(2);
+        //edidoController.mostrarPedido(idUsuario, fecha, total, idSede);
 
         /**
          * Prueba de inserción de datos a la tabla categorias_RD
@@ -81,7 +91,72 @@ public class Main {
         //categoriaController.agregarCategoria("Tarjetas de video");
         //categoriaController.modificarCategoria("Mouses", 1);
         //categoriaController.eliminarCategoria(1);
-        categoriaController.listarCategorias(nombreCategoria);
+        //  categoriaController.listarCategorias(nombreCategoria);
+
+
+        int opcion;
+        do {
+            System.out.println("TIENDA ELECTRONICA");
+            System.out.println("***USUARIOS***");
+            System.out.println("1. Registrar Usuario");
+            System.out.println("2. Mostrar Usuario");
+            System.out.println("3. Eliminar Usuario");
+            System.out.println("4. Actualizar Usuario");
+            System.out.println("5. Salir");
+            System.out.print("Elija una opción: ");
+
+            // Leer la opción del usuario
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Consumir la nueva línea
+
+            switch (opcion) {
+                case 1:
+                    System.out.print("Ingrese el nombre del usuario: ");
+                    nombre = scanner.nextLine();
+                    System.out.print("Ingrese el apellido del usuario: ");
+                    apellido = scanner.nextLine();
+                    System.out.print("Ingrese la cédula del usuario: ");
+                    cedula = scanner.nextLine();
+                    System.out.println("Ingrese el correo del usuario: ");
+                    correo = scanner.nextLine();
+                    System.out.println("Ingrese el telefono del usuario");
+                    telefono = Integer.parseInt(scanner.nextLine());
+                    usuarioController.agregarUsuario(apellido, cedula, nombre,correo,telefono);
+                    break;
+                case 2:
+                    usuarioController.mostrarUsuario(nombre, apellido, cedula,correo,telefono);
+                    break;
+                case 3:
+                    System.out.print("Ingrese el id  del usuario a eliminar: ");
+                   int idUsuario = Integer.parseInt(scanner.nextLine());
+                    usuarioController.borrarUsuario(idUsuario);
+                    break;
+                case 4:
+                    System.out.println("Ingrese el id del usuario que desee actualizar");
+                   int idusuarios = Integer.parseInt(scanner.nextLine());
+                    System.out.print("Ingrese la cedula a  actualizar: ");
+                    cedula = scanner.nextLine();
+                    System.out.print("Ingrese el nuevo nombre del usuario: ");
+                    nombre = scanner.nextLine();
+                    System.out.print("Ingrese el nuevo apellido del usuario: ");
+                    apellido = scanner.nextLine();
+                    System.out.println("Ingrese el nuevo telefono del usuario");
+                    telefono = Integer.parseInt(scanner.nextLine());
+                    System.out.println("Ingrese el nuevo correo del usuario");
+                    correo = scanner.nextLine();
+                    usuarioController.actualizarUsuario(cedula, nombre, apellido,correo,telefono,idusuarios);
+                    break;
+                case 5:
+                    System.out.println("Saliendo del sistema...");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+                    break;
+            }
+        } while (opcion <= 6);
+
+        scanner.close();
+    }
 
     }
-}
+

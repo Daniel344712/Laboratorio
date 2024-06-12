@@ -5,12 +5,16 @@ public class usuariosModel {
     private String apellido;
     private String cedula;
 
+    private String correo;
+    private int telefono;
   private String nombre;
 
-    public usuariosModel(String apellido, String cedula, String nombre) {
+    public usuariosModel(String apellido, String cedula, String nombre, String correo, int telefono) {
         this.apellido = apellido;
         this.cedula = cedula;
         this.nombre = nombre;
+        this.correo = correo;
+        this.telefono = telefono;
     }
 
     public String getApellido() {
