@@ -53,7 +53,7 @@ public class UsuarioController {
 
         try{
             usuarioDAO.mostraUsuario(datos);
-            viewConsole.showMessage("Mostrando datos correcta");
+            viewConsole.showMessage("Mostrando datos correctamente");
 
         } catch (SQLException e){
             viewConsole.errorMessage("Error al mostrar datos: " + e.getMessage());
