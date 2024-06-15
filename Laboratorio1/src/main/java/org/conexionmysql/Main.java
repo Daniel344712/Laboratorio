@@ -1,6 +1,7 @@
 package org.conexionmysql;
 
 import controller.*;
+import model.PedidoModel;
 import view.ConsoleView;
 
 import java.io.IOException;
@@ -39,6 +40,42 @@ public class Main {
                     break;
                 case 4:
                     actualizarUsuario(scanner, usuarioController);
+                    break;
+                case 6:
+                    agregarProducto(scanner, productoController);
+                    break;
+                case 7:
+                    mostrarProductos(productoController);
+                    break;
+                case 8:
+                    eliminarProductos(scanner, productoController);
+                    break;
+                case 9:
+                    modificarProductos(scanner, productoController);
+                    break;
+                case 10:
+                    agregarCategoria(scanner, categoriaController);
+                    break;
+                case 11:
+                    mostrarCategoria(categoriaController);
+                    break;
+                case 12:
+                    eliminarCategoria(scanner, categoriaController);
+                    break;
+                case 13:
+                    modificarCategoria(scanner , categoriaController);
+                    break;
+                case 14:
+                    agregarPedido(scanner, pedidoController);
+                    break;
+                case 15:
+                    mostrarPedidos(pedidoController);
+                    break;
+                case 16:
+                    eliminarPedido(scanner, pedidoController);
+                    break;
+                case 17:
+                    modificarPedidos(scanner, pedidoController);
                     break;
                 case 22:
                     registrarRol(scanner,rolController);
@@ -219,4 +256,100 @@ public class Main {
         String descripcion = scanner.nextLine();
         rolController.modificarRol(idRol,nombre,descripcion);
     }
+    public static void agregarProducto (Scanner scanner, ProductoController productoController){
+        System.out.print("Ingrese el nombre del producto: ");
+        String nombreProducto = scanner.nextLine();
+        System.out.print("Ingrese la cantidad del producto: ");
+        int cantidad = Integer.parseInt(scanner.nextLine());
+        System.out.print("Ingrese el precio del producto: ");
+        int precio = Integer.parseInt(scanner.nextLine());
+        productoController.agregarProdcuto(nombreProducto,cantidad, precio);
+    }
+    public static void mostrarProductos (ProductoController productoController){
+        String nombreProducto = "";
+        int cantidad = 0;
+        int precio = 0;
+        productoController.mostrarProdcuto(nombreProducto, cantidad, precio);
+
+    }
+    public static void eliminarProductos(Scanner scanner , ProductoController productoController){
+        System.out.println("Ingrese el id del producto a eliminar");
+        int idproducto = Integer.parseInt(scanner.nextLine());
+        productoController.eliminarProducto(idproducto);
+
+    }
+    public static void modificarProductos(Scanner scanner, ProductoController productoController){
+        System.out.println("Ingrese el id del producto que desee actualizar");
+        int idproducto = Integer.parseInt(scanner.nextLine());
+        System.out.print("Ingrese el nombre del producto a actualizar: ");
+        String nombreProducto = scanner.nextLine();
+        System.out.print("Ingrese la nueva cantidad del producto: ");
+        int cantidad = Integer.parseInt(scanner.nextLine());
+        System.out.print("Ingrese el nuevo precio del producto: ");
+        int precio = Integer.parseInt(scanner.nextLine());
+
+        productoController.modificarProducto(idproducto, nombreProducto, cantidad, precio);
+    }
+
+    public static  void agregarCategoria(Scanner scanner, CategoriaController categoriaController){
+        System.out.println("Ingrese el nombre de la categoria a registrar: ");
+        String nombreCategoria = scanner.nextLine();
+        categoriaController.agregarCategoria(nombreCategoria);
+    }
+
+    public static void mostrarCategoria(CategoriaController categoriaController){
+        String nombreCategoria = "";
+        categoriaController.listarCategorias(nombreCategoria);
+    }
+    public static void eliminarCategoria(Scanner scanner, CategoriaController categoriaController){
+        System.out.println("Ingrese el id de la categoria a eliminar: ");
+        int idcategoria = Integer.parseInt(scanner.nextLine());
+        categoriaController.eliminarCategoria(idcategoria);
+    }
+    public static void modificarCategoria(Scanner scanner, CategoriaController categoriaController){
+        System.out.println("Ingrese el id de la categoria a modificar: ");
+       int idcategoria = Integer.parseInt(scanner.nextLine());
+        System.out.println("Ingrese el nuevo nombre del categoria");
+        String nombreCategoria = scanner.nextLine();
+        categoriaController.modificarCategoria(nombreCategoria, idcategoria);
+    }
+
+    public static void agregarPedido(Scanner scanner, PedidoController pedidoController){
+        System.out.println("Ingrese el id del usuario del pedido a realizar: ");
+        int idUsuario = Integer.parseInt(scanner.nextLine());
+        System.out.println("Ingrese la fecha del pedido: ");
+        String fecha = scanner.nextLine();
+        System.out.println("Ingrese el total del pedido realizado: ");
+        int total = scanner.nextInt();
+        System.out.println("Ingrese el id de la sede donde se realizo el pedido: ");
+        int idSede = scanner.nextInt();
+        pedidoController.agregarPedido(idUsuario, fecha, total, idSede);
+    }
+    public static void mostrarPedidos(PedidoController pedidoController){
+        int idUsuario = 0;
+        String fecha = "";
+        int total = 0;
+        int idSede = 0;
+        pedidoController.mostrarPedido(idUsuario, fecha, total, idSede);
+    }
+    public static void eliminarPedido(Scanner scanner, PedidoController pedidoController){
+        System.out.println("Ingrese el id del pedido a eliminar: ");
+        int idpedido = Integer.parseInt(scanner.nextLine());
+        pedidoController.eliminarPedido(idpedido);
+    }
+    public static void modificarPedidos(Scanner scanner, PedidoController pedidoController){
+        System.out.println("Ingrese el id del pedido a modificar: ");
+        int idpedido = Integer.parseInt(scanner.nextLine());
+        System.out.println("Ingrese el nuevo id del usuario asignado al pedido: ");
+        int idUsuario = Integer.parseInt(scanner.nextLine());
+        System.out.println("Ingrese la nueva fecha del pedido: ");
+        String fecha = scanner.nextLine();
+        System.out.println("Ingrese el nuevo total del pedido: ");
+        int total = scanner.nextInt();
+        System.out.println("Ingrese el nuevo id de la sede registrada al pedido: ");
+        int idSede = scanner.nextInt();
+        pedidoController.modificarPedido(idpedido, idUsuario, fecha, total, idSede);
+    }
+
+
 }
