@@ -4,6 +4,7 @@ import controller.*;
 import model.PedidoModel;
 import view.ConsoleView;
 
+import javax.xml.transform.Source;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -76,6 +77,18 @@ public class Main {
                     break;
                 case 17:
                     modificarPedidos(scanner, pedidoController);
+                    break;
+                case 18:
+                    agregarSedes(scanner, sedesController);
+                    break;
+                case 19:
+                    mostrarSedes(scanner, sedesController);
+                    break;
+                case 20:
+                    eliminarSedes(scanner,sedesController);
+                    break;
+                case 21:
+                    modificarSede(scanner,sedesController);
                     break;
                 case 22:
                     registrarRol(scanner,rolController);
@@ -166,16 +179,12 @@ public class Main {
     }
 
     private static void mostrarUsuario(Scanner scanner, UsuarioController usuarioController) {
-        System.out.print("Ingrese el nombre del usuario: ");
-        String nombre = scanner.nextLine();
-        System.out.print("Ingrese el apellido del usuario: ");
-        String apellido = scanner.nextLine();
-        System.out.print("Ingrese la cédula del usuario: ");
-        String cedula = scanner.nextLine();
-        System.out.println("Ingrese el correo del usuario: ");
-        String correo = scanner.nextLine();
-        System.out.println("Ingrese el telefono del usuario");
-        int telefono = Integer.parseInt(scanner.nextLine());
+
+        String nombre = "";
+        String apellido = "";
+        String cedula = "";
+        String correo = "";
+        int telefono = 0;
         usuarioController.mostrarUsuario(nombre, apellido, cedula, correo, telefono);
     }
 
@@ -351,5 +360,31 @@ public class Main {
         pedidoController.modificarPedido(idpedido, idUsuario, fecha, total, idSede);
     }
 
-
+    public static void agregarSedes(Scanner scanner, SedesController sedesController){
+        System.out.println("Nombre de la sede: ");
+        String nombre = scanner.nextLine();
+        System.out.println("Localizacion de la sede: ");
+        String localizacion = scanner.nextLine();
+        sedesController.agregarSedes(nombre,localizacion);
+    }
+    public static void eliminarSedes(Scanner scanner, SedesController sedesController)
+    {
+        System.out.println("Digite el id de la sede que desee eliminar: ");
+        int idsede = Integer.parseInt(scanner.nextLine());
+        sedesController.borrarSedes(idsede);
+    }
+    public static void mostrarSedes(Scanner scanner, SedesController sedesController){
+        String nombre = "";
+        String localizacion = "";
+        sedesController.mostrarSede(nombre,localizacion);
+    }
+    public static void modificarSede(Scanner scanner, SedesController sedesController){
+        System.out.println("Digite el id de la sede que desee eliminar");
+        int idsede = Integer.parseInt(scanner.nextLine());
+        System.out.println("Digite el nuevo nombre de la sede ");
+        String nombre = scanner.nextLine();
+        System.out.println("Digite la nueva localizacion de la sede ");
+        String localizacion = scanner.nextLine();
+        sedesController.actualizarSede(nombre,localizacion,idsede);
+    }
 }
