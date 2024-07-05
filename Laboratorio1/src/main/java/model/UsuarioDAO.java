@@ -12,12 +12,15 @@ public class UsuarioDAO {
         this.connection = connection;
     }
 
-    public void agregarUsuario( usuariosModel objeto) throws SQLException {
-        String query = "INSERT INTO `usuario_RD`( `apellido`, `cedula`, `nombre`) VALUES (?, ?, ?)";
-        try (PreparedStatement stmt = connection.prepareStatement(query)){
+    public void agregarUsuario(usuariosModel objeto) throws SQLException {
+        String query = "INSERT INTO `usuario_RD`( `apellido`, `cedula`, `nombre`, `correo`, `telefono`, `contrasenna`) VALUES (?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, objeto.getApellido());
             stmt.setString(2, objeto.getCedula());
             stmt.setString(3, objeto.getNombre());
+            stmt.setString(4, objeto.getCorreo());
+            stmt.setInt(5, objeto.getTelefono());
+            stmt.setString(6, objeto.getContrasenna());
             stmt.executeUpdate();
         }
     }

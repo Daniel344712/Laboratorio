@@ -20,8 +20,8 @@ public class UsuarioController {
         this.usuarioDAO = new UsuarioDAO(connection);
     }
 
-    public void agregarUsuario(String apellido, String cedula, String nombre, String correo, int telefono){
-        usuariosModel datos = new usuariosModel(apellido, cedula, nombre, correo, telefono);
+    public void agregarUsuario(String apellido, String cedula, String nombre, String correo, int telefono, String contrasenna){
+        usuariosModel datos = new usuariosModel(apellido, cedula, nombre, correo, telefono, contrasenna);
         try{
             usuarioDAO.agregarUsuario(datos);
             viewConsole.showMessage("Insercion de datos correcta");
@@ -39,8 +39,8 @@ public class UsuarioController {
           viewConsole.errorMessage("Error al borrar los datos:" + e.getMessage());
       }
     }
-    public void actualizarUsuario(String apellido, String cedula, String nombre, String correo, int telefono, int id) {
-        usuariosModel datos = new usuariosModel(apellido, cedula, nombre, correo,telefono);
+    public void actualizarUsuario(String apellido, String cedula, String nombre, String correo, int telefono, int id, String contrasenna) {
+        usuariosModel datos = new usuariosModel(apellido, cedula, nombre, correo,telefono,contrasenna);
         try {
             usuarioDAO.actualizarUsuario(datos, id);
             viewConsole.showMessage("Se actualizo los datos del usuario");
@@ -48,8 +48,8 @@ public class UsuarioController {
             viewConsole.errorMessage("Error al actualizar los datos del usuario: " + e.getMessage());
         }
     }
-    public void mostrarUsuario(String nombre, String apellido, String cedula, String correo, int telefono){
-        usuariosModel datos = new usuariosModel(nombre, apellido, cedula,correo,telefono);
+    public void mostrarUsuario(String nombre, String apellido, String cedula, String correo, int telefono, String contrasenna){
+        usuariosModel datos = new usuariosModel(nombre, apellido, cedula,correo,telefono, contrasenna);
 
         try{
             usuarioDAO.mostraUsuario(datos);

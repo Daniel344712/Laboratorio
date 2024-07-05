@@ -168,6 +168,8 @@ public class Main {
         System.out.print("Ingrese el nombre del usuario: ");
         String nombre = scanner.nextLine();
         System.out.print("Ingrese el apellido del usuario: ");
+        System.out.println("Ingrese la contrasenna del usuario ");
+        String contrasenna = scanner.nextLine();
         String apellido = scanner.nextLine();
         System.out.print("Ingrese la cédula del usuario: ");
         String cedula = scanner.nextLine();
@@ -175,7 +177,7 @@ public class Main {
         String correo = scanner.nextLine();
         System.out.println("Ingrese el telefono del usuario");
         int telefono = Integer.parseInt(scanner.nextLine());
-        usuarioController.agregarUsuario(apellido, cedula, nombre, correo, telefono);
+        usuarioController.agregarUsuario(apellido, cedula, nombre, correo, telefono,contrasenna);
     }
 
     private static void mostrarUsuario(Scanner scanner, UsuarioController usuarioController) {
@@ -185,7 +187,8 @@ public class Main {
         String cedula = "";
         String correo = "";
         int telefono = 0;
-        usuarioController.mostrarUsuario(nombre, apellido, cedula, correo, telefono);
+        String contrasenna = "";
+        usuarioController.mostrarUsuario(nombre, apellido, cedula, correo, telefono, contrasenna);
     }
 
     private static void eliminarUsuario(Scanner scanner, UsuarioController usuarioController) {
@@ -207,7 +210,9 @@ public class Main {
         int telefono = Integer.parseInt(scanner.nextLine());
         System.out.println("Ingrese el nuevo correo del usuario");
         String correo = scanner.nextLine();
-        usuarioController.actualizarUsuario(cedula, nombre, apellido, correo, telefono, idusuarios);
+        System.out.println("Ingrese la nueva contraseña del usuario");
+        String contrasenna = scanner.nextLine();
+        usuarioController.actualizarUsuario(cedula, nombre, apellido, correo, telefono, idusuarios,contrasenna);
     }
 
     private static void registrarAsociacion(Scanner scanner, AsociacionController asociacionController) {
@@ -387,4 +392,6 @@ public class Main {
         String localizacion = scanner.nextLine();
         sedesController.actualizarSede(nombre,localizacion,idsede);
     }
+
+
 }
