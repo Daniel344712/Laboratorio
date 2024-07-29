@@ -36,7 +36,7 @@ public class usuario {
 
         Font font = new Font("Arial", Font.PLAIN, 16);
 
-        UsuarioLabel = new JLabel("Usuario:");
+        UsuarioLabel = new JLabel("Nombre:");
         UsuarioLabel.setFont(font);
         textUsuario = new JTextField(15);
         textUsuario.setFont(font);
@@ -176,7 +176,7 @@ public class usuario {
 
         FlatDarkLaf.setup();
 
-        JFrame frame = new JFrame("Usuario");
+        JFrame frame = new JFrame("Registro usuarios");
         frame.setContentPane(new usuario().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 500);
